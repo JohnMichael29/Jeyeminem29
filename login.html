@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Saving Memories</title>
+
+    <link rel="stylesheet" href="login.css">
+
+</head>
+
+<body class="login-page">
+
+    <div class="login-container">
+
+        <h1 class="login-title">LOG IN</h1>
+
+        <form class="login-form">
+
+            <div class="input-group">
+
+                <span class="user-icon">●</span>
+
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group password-group">
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    id="password"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="password-icon"
+                    onclick="togglePassword()">
+                </button>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-btn">
+                LOGIN
+            </button>
+
+        </form>
+
+
+        <div class="login-footer">
+
+            <span class="footer-icon">●</span>
+
+            <span>Saving Memories</span>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function togglePassword() {
+
+            const password =
+                document.getElementById("password");
+
+            if (password.type === "password") {
+
+                password.type = "text";
+
+            } else {
+
+                password.type = "password";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --accent: #e8b25d;      /* warm gold — headings, labels, highlights */
+    --accent-light: #f3d9a4; /* lighter tint for hover/secondary use */
+    --text-soft: #e6e6e6;    /* soft off-white for body copy */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--text-soft);
+    background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+                url("background.jpg") center/cover fixed;
+}
+
+/* HOME */
+.main-nav {
+    position: absolute;
+    top: 30px;
+    left: 7%;
+}
+
+.main-nav a {
+    color: var(--text-soft);
+    text-decoration: none;
+    font-size: 17px;
+    transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+    color: var(--accent);
+}
+
+/* HEADER */
+.site-header {
+    padding: 80px 7% 30px;
+}
+
+.brand h1 {
+    font-size: 36px;
+    color: var(--accent);
+}
+.brand p { margin-top: 8px; }
+
+/* HERO */
+.about-hero {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    padding: 60px 7%;
+}
+
+.about-hero-content { max-width: 600px; }
+
+.section-label {
+    display: block;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.about-hero h2 {
+    font-size: 50px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+p { line-height: 1.7; }
+
+/* ABOUT CARDS */
+.about-section {
+    padding: 60px 7%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+    color: var(--accent);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.about-card,
+.memory-quote {
+    background: rgba(0,0,0,.6);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.about-card h3 {
+    margin: 15px 0;
+    color: var(--accent-light);
+}
+
+.card-icon {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+}
+
+/* VALUES */
+.values-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding: 60px 7%;
+}
+
+.values-intro h2 {
+    font-size: 38px;
+    color: var(--accent);
+}
+
+.value-item {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.value-number {
+    min-width: 45px;
+    height: 45px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.memory-quote {
+    margin: 30px 7% 60px;
+    font-size: 22px;
+    color: var(--accent-light);
+    font-style: italic;
+}
+
+/* FOOTER */
+.site-footer {
+    text-align: center;
+    padding: 30px;
+    background: rgba(0,0,0,.75);
+}
+
+.footer-brand p { margin-bottom: 10px; }
+
+/* MOBILE */
+@media (max-width: 700px) {
+    .about-grid,
+    .values-section {
+        grid-template-columns: 1fr;
+    }
+
+    .about-hero h2 { font-size: 38px; }
+}
