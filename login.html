@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,92 +8,108 @@
 
     <title>Login | Saving Memories</title>
 
-    <link rel="stylesheet" href="login.css">
-
+    <link rel="stylesheet" href="SavingMemories.css">
 </head>
 
-<body class="login-page">
+<body>
 
-    <div class="login-container">
+    <!-- LOGIN PAGE -->
+    <div class="auth">
 
-        <h1 class="login-title">LOG IN</h1>
+        <div class="panel">
 
-        <form class="login-form">
+            <!-- WEBSITE NAME -->
+            <a href="index.html" class="brand">
+                Saving Memories
+            </a>
 
-            <div class="input-group">
+            <!-- PAGE TITLE -->
+            <h1>LOG IN</h1>
 
-                <span class="user-icon">●</span>
+            <p class="sub">
+                Welcome back! Continue saving your memories.
+            </p>
 
-                <input
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                    required
-                >
+            <!-- LOGIN FORM -->
+            <form class="login-form">
 
-            </div>
+                <!-- USERNAME -->
+                <div class="field">
 
+                    <label for="username">Username</label>
 
-            <div class="input-group password-group">
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Enter your username"
+                        required
+                    >
 
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    id="password"
-                    required
-                >
+                </div>
 
-                <button
-                    type="button"
-                    class="password-icon"
-                    onclick="togglePassword()">
+                <!-- PASSWORD -->
+                <div class="field">
+
+                    <label for="password">Password</label>
+
+                    <div class="input-wrap">
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="toggle"
+                            onclick="togglePassword()">
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- LOGIN BUTTON -->
+                <button type="submit" class="go">
+                    LOGIN
                 </button>
 
+            </form>
+
+            <!-- REGISTRATION LINK -->
+            <div class="links">
+
+                <p>
+                    Don't have an account?
+                    <a href="registration.html">Create account.</a>
+                </p>
+
             </div>
-
-
-            <button
-                type="submit"
-                class="login-btn">
-                LOGIN
-            </button>
-
-        </form>
-
-
-        <div class="login-footer">
-
-            <span class="footer-icon">●</span>
-
-            <span>Saving Memories</span>
 
         </div>
 
     </div>
 
-
+    <!-- SHOW / HIDE PASSWORD -->
     <script>
-
         function togglePassword() {
-
-            const password =
-                document.getElementById("password");
+            const password = document.getElementById("password");
+            const button = document.querySelector(".toggle");
 
             if (password.type === "password") {
-
                 password.type = "text";
-
+                button.textContent = "Hide";
             } else {
-
                 password.type = "password";
-
+                button.textContent = "Show";
             }
-
         }
-
     </script>
 
 </body>
-
 </html>
