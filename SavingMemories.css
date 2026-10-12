@@ -210,4 +210,250 @@ figcaption {
   text-align: center;
   text-transform: uppercase;
 }
+/* 7. ABOUT PAGE */
+.about-content {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: center;
+  gap: 3rem;
+}
+
+.about-card {
+  padding: 2rem;
+  background: var(--glass);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+
+.about-card p + p {
+  margin-top: 1rem;
+}
+
+.vision {
+  margin-top: 2rem;
+}
+
+/* 8. WHY IT MATTERS */
+.why {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+}
+
+.list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.item .circle {
+  flex: none;
+  margin: 0;
+}
+
+/* 9. BUTTONS */
+.btn,
+.go {
+  display: inline-block;
+  padding: .85rem 2rem;
+  color: #1a1409;
+  font: 700 1rem var(--font);
+  text-align: center;
+  text-decoration: none;
+  background: var(--gold);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.btn {
+  margin-top: 1rem;
+}
+
+.btn:hover,
+.go:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+/* 10. QUOTE */
+.quote {
+  padding: 2rem;
+  color: var(--gold-light);
+  font-size: 1.3rem;
+  font-style: italic;
+  text-align: center;
+  background: var(--glass);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+/* 11. LOGIN AND REGISTRATION */
+.auth {
+  display: grid;
+  place-items: center;
+  min-height: 75vh;
+  padding: 2rem 1rem;
+}
+
+.panel {
+  width: min(430px, 100%);
+  padding: 2.5rem 2rem;
+  background: rgba(15, 12, 9, .85);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .4);
+  backdrop-filter: blur(10px);
+}
+
+.panel .brand {
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--gold);
+  font: 700 1.4rem Georgia, serif;
+  text-align: center;
+  text-decoration: none;
+}
+
+.panel h1 {
+  margin-bottom: .5rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.panel .sub {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.field {
+  margin-bottom: 1rem;
+}
+
+.field label {
+  display: block;
+  margin-bottom: .35rem;
+  font-weight: 600;
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.field input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: .8rem 1rem;
+  color: white;
+  font: inherit;
+  background: rgba(255, 255, 255, .07);
+  border: 1px solid rgba(244, 234, 217, .35);
+  border-radius: 9px;
+}
+
+.field input::placeholder {
+  color: rgba(255, 255, 255, .6);
+}
+
+.field input:focus {
+  border-color: var(--gold);
+  outline: none;
+}
+
+.input-wrap input {
+  padding-right: 4.5rem;
+}
+
+.toggle {
+  position: absolute;
+  top: 50%;
+  right: .5rem;
+  padding: .4rem;
+  color: var(--gold);
+  font: 600 .9rem var(--font);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.go {
+  width: 100%;
+  margin-top: .5rem;
+}
+
+.links {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.links a {
+  color: var(--gold);
+}
+
+/* 12. FOOTER */
+footer {
+  margin-top: 2rem;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  background: rgba(8, 6, 4, .75);
+}
+
+/* 13. TABLETS AND MOBILE */
+@media (max-width: 800px) {
+  .top {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cards,
+  .gallery,
+  .why,
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: 280px;
+  }
+
+  section {
+    padding: 2.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrap {
+    width: calc(100% - 2rem);
+  }
+
+  .panel {
+    padding: 2rem 1.25rem;
+  }
+
+  nav {
+    gap: 1rem;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+  }
+}
+
+/* 14. REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
 
