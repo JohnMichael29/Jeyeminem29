@@ -1,8 +1,8 @@
-
+/* entire view in site*/
 :root {
   --gold: #e9b35a;
   --gold-light: #f4cd85;
-  --glass: rgba(18, 16, 14, .65);
+  --glass: rgba(13, 12, 10, 0.65);
   --line: rgba(233, 179, 90, .4);
   --font: "Segoe UI", Arial, sans-serif;
 }
@@ -17,10 +17,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* size of all body up to down */
+/* color of txt, background exposure*/
 body {
   min-height: 100vh;
   font: 1rem/1.7 var(--font);
-  color: white;
+  color: rgb(255, 255, 255);
   background:
     linear-gradient(rgba(10, 8, 6, .55), rgba(10, 8, 6, .8)),
     url("background.jpg") center 55% / cover fixed #14110e;
@@ -32,7 +34,7 @@ a {
 
 :focus-visible {
   outline: 3px solid var(--gold);
-  outline-offset: 3px;
+  outline-offset: 10px;
 }
 
 .wrap {
@@ -83,8 +85,6 @@ nav a.active {
 }
 
 /* HEADINGS AND TEXT */
-
-
 section {
   padding: 3.5rem 0;
 }
