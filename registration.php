@@ -1,4 +1,43 @@
+<?php
+session_start();
+include "db.php";
 
+$error = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = trim($_POST["email"]);
+    $username = trim($_POST["username"]);
+    $password = $_POST["password"];
+
+    if ($email == "" || $username == "" || $password == "") {
+        $error = "Please fill up all the fields.";
+    } else if (strlen($password) < 6) {
+        $error = "Password must be at least 6 characters.";
+    } else {
+        // check first if the email or username is already used
+        $check = mysqli_prepare($conn, "SELECT id FROM users WHERE email = ? OR username = ?");
+        mysqli_stmt_bind_param($check, "ss", $email, $username);
+        mysqli_stmt_execute($check);
+        mysqli_stmt_store_result($check);
+
+        if (mysqli_stmt_num_rows($check) > 0) {
+            $error = "Email or username is already taken.";
+        } else {
+            $hashed = password_hash($password, PASSWORD_DEFAULT);
+
+            $sql = mysqli_prepare($conn, "INSERT INTO users (email, username, password) VALUES (?, ?, ?)");
+            mysqli_stmt_bind_param($sql, "sss", $email, $username, $hashed);
+
+            if (mysqli_stmt_execute($sql)) {
+                header("Location: login.php?registered=1");
+                exit();
+            } else {
+                $error = "Something went wrong, please try again.";
+            }
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,8 +66,11 @@
                 Start saving your memories today.
             </p>
 
+            <?php if ($error != "") { ?>
+                <p class="msg error"><?php echo $error; ?></p>
+            <?php } ?>
 
-            <form class="registration-form">
+            <form class="registration-form" method="POST" action="registration.php">
 
 
                 <div class="field">
@@ -40,6 +82,7 @@
                         id="email"
                         name="email"
                         placeholder="Enter your email"
+                        value="<?php echo isset($email) ? htmlspecialchars($email) : ''; ?>"
                         required
                     >
 
@@ -54,6 +97,7 @@
                         id="username"
                         name="username"
                         placeholder="Enter your username"
+                        value="<?php echo isset($username) ? htmlspecialchars($username) : ''; ?>"
                         required
                     >
 
@@ -81,7 +125,7 @@
             <div class="links">
                 <p>
                     Already have an account?
-                    <a href="login.html">Log in.</a>
+                    <a href="login.php">Log in.</a>
                 </p>
             </div>
         </div>

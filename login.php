@@ -1,4 +1,35 @@
+<?php
+session_start();
+include "db.php";
 
+// if already logged in go straight to memories
+if (isset($_SESSION["user_id"])) {
+    header("Location: memories.php");
+    exit();
+}
+
+$error = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = trim($_POST["username"]);
+    $password = $_POST["password"];
+
+    $sql = mysqli_prepare($conn, "SELECT id, username, password FROM users WHERE username = ?");
+    mysqli_stmt_bind_param($sql, "s", $username);
+    mysqli_stmt_execute($sql);
+    $result = mysqli_stmt_get_result($sql);
+    $row = mysqli_fetch_assoc($result);
+
+    if ($row && password_verify($password, $row["password"])) {
+        $_SESSION["user_id"] = $row["id"];
+        $_SESSION["username"] = $row["username"];
+        header("Location: memories.php");
+        exit();
+    } else {
+        $error = "Wrong username or password.";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +58,15 @@
                 Welcome back! Continue saving your memories.
             </p>
 
-            <form class="login-form">
+            <?php if (isset($_GET["registered"])) { ?>
+                <p class="msg success">Account created! You can now log in.</p>
+            <?php } ?>
+
+            <?php if ($error != "") { ?>
+                <p class="msg error"><?php echo $error; ?></p>
+            <?php } ?>
+
+            <form class="login-form" method="POST" action="login.php">
 
                 <div class="field">
 
@@ -80,7 +119,7 @@
 
                 <p>
                     Don't have an account?
-                    <a href="registration.html">Create account.</a>
+                    <a href="registration.php">Create account.</a>
                 </p>
 
             </div>
