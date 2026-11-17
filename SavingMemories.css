@@ -34,7 +34,7 @@ a {
 
 :focus-visible {
   outline: 3px solid var(--gold);
-  outline-offset: 10px;
+  outline-offset: 3px;
 }
 
 .wrap {
@@ -296,6 +296,23 @@ figcaption {
   transform: translateY(-2px);
 }
 
+/* landing page buttons */
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn-outline {
+  color: var(--gold);
+  background: none;
+  border: 2px solid var(--gold);
+}
+
+.btn-outline:hover {
+  color: #1a1409;
+}
+
 
 /* QUOTE */
 .quote {
@@ -391,6 +408,7 @@ figcaption {
   position: absolute;
   top: 50%;
   right: .5rem;
+  transform: translateY(-50%);
   padding: .4rem;
   color: var(--gold);
   font: 600 .9rem var(--font);
@@ -411,6 +429,75 @@ figcaption {
 
 .links a {
   color: var(--gold);
+}
+
+
+/* error and success message */
+.msg {
+  margin-bottom: 1rem;
+  padding: .7rem 1rem;
+  font-size: .9rem;
+  border-radius: 9px;
+}
+
+.msg.error {
+  background: rgba(200, 60, 60, .25);
+  border: 1px solid rgba(220, 90, 90, .6);
+}
+
+.msg.success {
+  background: rgba(90, 170, 90, .25);
+  border: 1px solid rgba(110, 190, 110, .6);
+}
+
+
+/* MY MEMORIES PAGE */
+.field select,
+.field textarea {
+  display: block;
+  width: 100%;
+  padding: .8rem 1rem;
+  color: white;
+  font: inherit;
+  background: rgba(255, 255, 255, .07);
+  border: 1px solid rgba(244, 234, 217, .35);
+  border-radius: 9px;
+}
+
+.field select option {
+  color: black;
+}
+
+.field textarea::placeholder {
+  color: rgba(255, 255, 255, .6);
+}
+
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--gold);
+  outline: none;
+}
+
+.memory-info {
+  padding: 0 1rem 1rem;
+}
+
+.memory-info p {
+  font-size: .9rem;
+}
+
+.memory-info small {
+  display: block;
+  margin-top: .5rem;
+  opacity: .7;
+}
+
+.delete {
+  display: inline-block;
+  margin-top: .5rem;
+  color: #e57b7b;
+  font-size: .85rem;
+  font-weight: 700;
 }
 
 
