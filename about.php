@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +17,7 @@
     <header class="top wrap">
 
         <div>
-            <a href="index.html" class="logo"
+            <a href="index.php" class="logo"
             style="text-decoration: none;">
                 Saving Memories
             </a>
@@ -27,10 +28,15 @@
         </div>
 
         <nav aria-label="Main Navigation">
-            <a href="index.html">Home</a>
-            <a href="about.html" class="active">About</a>
-            <a href="login.php">Login</a>
-            <a href="registration.php">Register</a>
+            <a href="index.php">Home</a>
+            <a href="about.php" class="active">About</a>
+            <?php if (isset($_SESSION["user_id"])) { ?>
+                <a href="memories.php">My Memories</a>
+                <a href="logout.php">Logout</a>
+            <?php } else { ?>
+                <a href="login.php">Login</a>
+                <a href="registration.php">Register</a>
+            <?php } ?>
         </nav>
 
     </header>

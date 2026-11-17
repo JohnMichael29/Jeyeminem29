@@ -97,7 +97,7 @@ $memories = mysqli_stmt_get_result($list);
 <body>
     <header class="top wrap">
         <div>
-            <a href="index.html" class="logo"
+            <a href="index.php" class="logo"
             style="text-decoration: none;">
                 Saving Memories
             </a>
@@ -107,7 +107,8 @@ $memories = mysqli_stmt_get_result($list);
         </div>
 
         <nav aria-label="Main Navigation">
-            <a href="index.html">Home</a>
+            <a href="index.php">Home</a>
+            <a href="about.php">About</a>
             <a href="memories.php" class="active">My Memories</a>
             <a href="logout.php">Logout</a>
         </nav>
