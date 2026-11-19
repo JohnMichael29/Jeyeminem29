@@ -1,5 +1,4 @@
 <?php
-// connection to the database (default xampp settings)
 $host = "localhost";
 $user = "root";
 $pass = "";
