@@ -216,9 +216,6 @@
 
             <h2>Your memories deserve a place.</h2>
 
-            <a href="registration.php" class="btn">
-                Create an Account →
-            </a>
 
         </section>
 
