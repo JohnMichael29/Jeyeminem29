@@ -13,8 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "Please fill up all the fields.";
     } else if (strlen($password) < 6) {
         $error = "Password must be at least 6 characters.";
-    } else {
-        // check first if the email or username is already used
+
+        } else {
         $check = mysqli_prepare($conn, "SELECT id FROM users WHERE email = ? OR username = ?");
         mysqli_stmt_bind_param($check, "ss", $email, $username);
         mysqli_stmt_execute($check);

@@ -2,7 +2,6 @@
 session_start();
 include "db.php";
 
-// cant open this page if not logged in
 if (!isset($_SESSION["user_id"])) {
     header("Location: login.php");
     exit();
@@ -12,7 +11,6 @@ $user_id = $_SESSION["user_id"];
 $error = "";
 $success = "";
 
-// ADD MEMORY
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = trim($_POST["title"]);
     $category = $_POST["category"];
@@ -36,8 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 mkdir("uploads");
             }
 
-            // new name so the pictures will not replace each other
-            $filename = $user_id . "_" . time() . "." . $ext;
+            $filename = $user_id . "_" . time() . "_" . rand(1000, 9999) . "." . $ext;
 
             if (move_uploaded_file($_FILES["image"]["tmp_name"], "uploads/" . $filename)) {
                 $sql = mysqli_prepare($conn, "INSERT INTO memories (user_id, title, category, story, image) VALUES (?, ?, ?, ?, ?)");
@@ -51,11 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// DELETE MEMORY
+
 if (isset($_GET["delete"])) {
     $id = $_GET["delete"];
 
-    // get the picture first so we can delete it in the folder
     $get = mysqli_prepare($conn, "SELECT image FROM memories WHERE id = ? AND user_id = ?");
     mysqli_stmt_bind_param($get, "ii", $id, $user_id);
     mysqli_stmt_execute($get);
@@ -76,7 +72,6 @@ if (isset($_GET["delete"])) {
     exit();
 }
 
-// GET ALL MEMORIES OF THE USER
 $list = mysqli_prepare($conn, "SELECT * FROM memories WHERE user_id = ? ORDER BY created_at DESC");
 mysqli_stmt_bind_param($list, "i", $user_id);
 mysqli_stmt_execute($list);
