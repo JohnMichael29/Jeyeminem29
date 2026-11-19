@@ -63,9 +63,6 @@
                     treasure the moments you never want to forget.
                 </p>
 
-                <a href="registration.php" class="btn">
-                    Just sign up here →
-                </a>
             </div>
         </section>
 
